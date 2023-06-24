@@ -1,0 +1,37 @@
+name: linuxpowertoys
+description: Bring Microsoft's PowerToys utilities to Linux world!
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 0.0.5+1
+
+environment:
+  sdk: '>=3.0.5 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  window_size:
+    git:
+      url: https://github.com/google/flutter-desktop-embedding
+      path: plugins/window_size
+  cupertino_icons: ^1.0.2
+  url_launcher: ^6.1.8
+  gsettings: ^0.2.7
+  dbus: ^0.7.8
+  shell: ^2.0.0
+  logging: ^1.2.0
+  package_info_plus: ^4.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  integration_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/images/FancyZones.png
+    - assets/images/General.png
