@@ -13,12 +13,13 @@ class GnomeExtensionUtils {
         path: DBusObjectPath("/org/gnome/Shell/Extensions"),
         name: "InstallRemoteExtension",
         interface: "org.gnome.Shell.Extensions",
-        values: [DBusString(uuid)]
-    );
+        values: [DBusString(uuid)]);
   }
 
-  static Future<Future<ProcessResult>> enableDisableExtension(String extensionName, bool enabled) async {
+  static Future<ProcessResult> enableDisableExtension(
+      String extensionName, bool enabled) {
     var shell = Shell();
-    return shell.run('gnome-extensions', arguments: [ enabled ? 'enable':'disable', extensionName]);
+    return shell.run('gnome-extensions',
+        arguments: [enabled ? 'enable' : 'disable', extensionName]);
   }
 }

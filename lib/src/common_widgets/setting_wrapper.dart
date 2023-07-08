@@ -5,12 +5,8 @@ import 'custom_card.dart';
 const verticalPadding = 20.0;
 
 class SettingWrapper extends StatelessWidget {
-  const SettingWrapper({
-    super.key,
-    required this.child,
-    required this.enabled,
-    this.title
-  });
+  const SettingWrapper(
+      {super.key, required this.child, required this.enabled, this.title});
 
   final Widget child;
   final bool enabled;
@@ -18,25 +14,26 @@ class SettingWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textColor = enabled ?
-    Theme.of(context).textTheme.bodyMedium?.color:
-    Theme.of(context).textTheme.bodyMedium?.color?.withAlpha(90);
+    var textColor = enabled
+        ? Theme.of(context).textTheme.bodyMedium?.color
+        : Theme.of(context).textTheme.bodyMedium?.color?.withAlpha(90);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        title != null ? Padding(
-          padding: const EdgeInsets.only(
-            top: verticalPadding,
-            bottom: 8.0
-          ),
-          child: Text(title!,
-            textAlign: TextAlign.start,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: textColor
-            ),
-          ),
-        ):const SizedBox.shrink(),
+        title != null
+            ? Padding(
+                padding:
+                    const EdgeInsets.only(top: verticalPadding, bottom: 8.0),
+                child: Text(
+                  title!,
+                  textAlign: TextAlign.start,
+                  style: Theme.of(context)
+                      .textTheme
+                      .titleMedium
+                      ?.copyWith(fontWeight: FontWeight.bold, color: textColor),
+                ),
+              )
+            : const SizedBox.shrink(),
         const SizedBox(height: 8.0),
         CustomCard(
           child: child,

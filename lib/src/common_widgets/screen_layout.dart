@@ -38,54 +38,54 @@ class ScreenLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomLayout(
-      titleWidget: Row(
+        titleWidget: Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12), // Image border
+              child: SizedBox.fromSize(
+                size: const Size(280, 200), // Image radius
+                child: image,
+              ),
+            ),
+            const SizedBox(
+              width: horizontalPadding,
+            ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  _Title(
+                      title: title,
+                      showInstallButton: !isInstalled,
+                      onInstallPressed: handleInstallPressed),
+                  const SizedBox(height: 36.0),
+                  Text(
+                    description,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    textAlign: TextAlign.justify,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        enableWidget: !isInstalled
+            ? null
+            : _EnableUtility(
+                title: enableTitle,
+                enabled: isEnabled,
+                handleEnableChange: handleEnableChange),
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12), // Image border
-            child: SizedBox.fromSize(
-              size: const Size(280, 200), // Image radius
-              child: image,
-            ),
-          ),
-          const SizedBox(width: horizontalPadding,),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                _Title(
-                    title: title,
-                    showInstallButton: !isInstalled,
-                    onInstallPressed: handleInstallPressed
-                ),
-                const SizedBox(height: 36.0),
-                Text(
-                  description,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  textAlign: TextAlign.justify,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      enableWidget: !isInstalled ? null:_EnableUtility(
-        title: enableTitle,
-        enabled: isEnabled,
-        handleEnableChange: handleEnableChange
-      ),
-      children: [
-        ...children,
-        const SizedBox(height: 16.0),
-        credits ?? const SizedBox.shrink()
-      ]
-    );
+          ...children,
+          const SizedBox(height: 16.0),
+          credits ?? const SizedBox.shrink()
+        ]);
   }
 }
 
 class _Title extends StatefulWidget {
   const _Title({
-    super.key,
     required this.title,
     required this.showInstallButton,
     required this.onInstallPressed,
@@ -100,7 +100,6 @@ class _Title extends StatefulWidget {
 }
 
 class _TitleState extends State<_Title> {
-
   bool installing = false;
 
   @override
@@ -126,28 +125,30 @@ class _TitleState extends State<_Title> {
   Widget build(BuildContext context) {
     var titleWidget = Text(
       widget.title,
-      style: Theme.of(context).textTheme.displaySmall?.copyWith(
-          fontWeight: FontWeight.bold
-      ),
+      style: Theme.of(context)
+          .textTheme
+          .displaySmall
+          ?.copyWith(fontWeight: FontWeight.bold),
     );
-    return widget.showInstallButton ? Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        titleWidget,
-        const SizedBox(width: 12.0),
-        FilledButton.icon(
-          onPressed: handleInstallation,
-          label: Text(installing ? 'Installing':'Install'),
-          icon: const Icon(Icons.download_for_offline_rounded),
-        ),
-      ],
-    ):titleWidget;
+    return widget.showInstallButton
+        ? Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              titleWidget,
+              const SizedBox(width: 12.0),
+              FilledButton.icon(
+                onPressed: handleInstallation,
+                label: Text(installing ? 'Installing' : 'Install'),
+                icon: const Icon(Icons.download_for_offline_rounded),
+              ),
+            ],
+          )
+        : titleWidget;
   }
 }
 
 class _EnableUtility extends StatelessWidget {
   const _EnableUtility({
-    super.key,
     required this.title,
     required this.enabled,
     required this.handleEnableChange,
@@ -160,10 +161,12 @@ class _EnableUtility extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var lightMode = Theme.of(context).brightness == Brightness.light;
-    Color successColor = lightMode ? Colors.green.shade500: Colors.green.shade900;
-    Color selectedThumbColor = lightMode ? Colors.white:Colors.white70;
+    Color successColor =
+        lightMode ? Colors.green.shade500 : Colors.green.shade900;
+    Color selectedThumbColor = lightMode ? Colors.white : Colors.white70;
 
-    return SettingWrapper(enabled: enabled,
+    return SettingWrapper(
+      enabled: enabled,
       child: Row(
         children: [
           Text(
@@ -174,7 +177,9 @@ class _EnableUtility extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 8.0),
             child: Text(
-              handleEnableChange == null ? 'Disabled':(enabled ? 'On':'Off'),
+              handleEnableChange == null
+                  ? 'Disabled'
+                  : (enabled ? 'On' : 'Off'),
               style: Theme.of(context).textTheme.bodyMedium,
             ),
           ),
@@ -182,7 +187,7 @@ class _EnableUtility extends StatelessWidget {
             value: handleEnableChange != null && enabled,
             onChanged: handleEnableChange,
             trackColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
+              (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected)) {
                   return successColor;
                 }
@@ -190,7 +195,7 @@ class _EnableUtility extends StatelessWidget {
               },
             ),
             thumbColor: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
+              (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected)) {
                   return selectedThumbColor;
                 }
@@ -198,7 +203,7 @@ class _EnableUtility extends StatelessWidget {
               },
             ),
             thumbIcon: MaterialStateProperty.resolveWith(
-                  (Set<MaterialState> states) {
+              (Set<MaterialState> states) {
                 if (states.contains(MaterialState.selected)) {
                   return Icon(Icons.check, color: successColor);
                 }

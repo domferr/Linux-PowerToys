@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-const cardInternalPadding = EdgeInsets.symmetric(
-    horizontal: 16.0, vertical: 20.0
-);
+const cardInternalPadding =
+    EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0);
 
 class CustomCard extends StatefulWidget {
   const CustomCard({

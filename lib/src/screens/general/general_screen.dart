@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:linuxpowertoys/src/common_widgets/custom_layout.dart';
 import 'package:linuxpowertoys/src/screens/general/version.dart';
 import 'package:logging/logging.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
-import '../../common_widgets/custom_layout.dart';
 import 'link_text.dart';
 
 const horizontalPadding = 32.0;
@@ -16,7 +16,6 @@ class GeneralScreen extends StatefulWidget {
 }
 
 class _GeneralScreenState extends State<GeneralScreen> {
-
   final _logger = Logger('GeneralScreenState');
 
   PackageInfo _packageInfo = PackageInfo(
@@ -51,16 +50,21 @@ class _GeneralScreenState extends State<GeneralScreen> {
             borderRadius: BorderRadius.circular(12), // Image border
             child: SizedBox.fromSize(
               size: const Size(280, 200), // Image radius
-              child: Image.asset("assets/images/General.png",
+              child: Image.asset(
+                "assets/images/General.png",
                 fit: BoxFit.cover,
                 errorBuilder: (ctx, error, stackTrace) {
-                  _logger.severe("Cannot load asset image assets/images/General.png", error);
+                  _logger.severe(
+                      "Cannot load asset image assets/images/General.png",
+                      error);
                   return const SizedBox();
                 },
               ),
             ),
           ),
-          const SizedBox(width: horizontalPadding,),
+          const SizedBox(
+            width: horizontalPadding,
+          ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -68,9 +72,10 @@ class _GeneralScreenState extends State<GeneralScreen> {
               children: [
                 Text(
                   "Welcome",
-                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                      fontWeight: FontWeight.bold
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .displaySmall
+                      ?.copyWith(fontWeight: FontWeight.bold),
                   textAlign: TextAlign.left,
                 ),
                 const SizedBox(height: 16.0),
@@ -85,18 +90,17 @@ class _GeneralScreenState extends State<GeneralScreen> {
                   children: [
                     LinkText(
                         url: 'https://github.com/domferr/Linux-PowerToys',
-                        placeholder: 'GitHub repository'
-                    ),
+                        placeholder: 'GitHub repository'),
                     SizedBox(width: spaceBetweenLinks),
                     LinkText(
-                        url: 'https://github.com/domferr/Linux-PowerToys/issues',
-                        placeholder: 'Report a bug'
-                    ),
+                        url:
+                            'https://github.com/domferr/Linux-PowerToys/issues',
+                        placeholder: 'Report a bug'),
                     SizedBox(width: spaceBetweenLinks),
                     LinkText(
-                        url: 'https://github.com/domferr/Linux-PowerToys/issues',
-                        placeholder: 'Request a feature'
-                    ),
+                        url:
+                            'https://github.com/domferr/Linux-PowerToys/issues',
+                        placeholder: 'Request a feature'),
                   ],
                 )
               ],

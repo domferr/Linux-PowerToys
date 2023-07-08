@@ -13,8 +13,9 @@ class Version extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return SettingWrapper(title: 'Version', enabled: true,
+    return SettingWrapper(
+      title: 'Version',
+      enabled: true,
       child: Row(
         children: [
           Text(
@@ -23,11 +24,11 @@ class Version extends StatelessWidget {
           ),
           Expanded(child: Container()),
           ElevatedButton(
-            onPressed: () {
-              launchUrl(Uri.parse("https://github.com/domferr/Linux-PowerToys/releases"));
-            },
-            child: const Text("Check for updates")
-          ),
+              onPressed: () {
+                launchUrl(Uri.parse(
+                    "https://github.com/domferr/Linux-PowerToys/releases"));
+              },
+              child: const Text("Check for updates")),
         ],
       ),
     );

@@ -10,7 +10,7 @@ abstract class UtilityBackend {
   Future<bool> isInstalled();
 
   /// Installs the utility.
-  Future<bool> install();
+  Future<void> install();
 
   /// Cleans up any resources used by the backend.
   void dispose();

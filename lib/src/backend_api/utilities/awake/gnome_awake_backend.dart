@@ -1,18 +1,18 @@
 import 'dart:async';
 
 import 'package:dbus/dbus.dart';
-import 'package:flutter/material.dart';
 import 'package:gsettings/gsettings.dart';
+import 'package:linuxpowertoys/src/backend_api/gnome/gnome_extension_utils.dart';
 import 'package:logging/logging.dart';
 
 import 'awake_backend.dart';
-import '../gnome_extension_utils.dart';
 
 /// Concrete implementation of the "Awake" backend for the Gnome desktop environment.
 class GnomeAwakeBackend extends AwakeBackend {
   final _logger = Logger('GnomeAwakeBackend');
 
-  final StreamController<bool> _keepAwakeController = StreamController<bool>.broadcast();
+  final StreamController<bool> _keepAwakeController =
+      StreamController<bool>.broadcast();
   bool _lastKeepAwake = false;
 
   @override
@@ -38,7 +38,8 @@ class GnomeAwakeBackend extends AwakeBackend {
   @override
   Future<bool> isEnabled() async {
     var settings = GSettings('org.gnome.shell');
-    var result = await settings.get('enabled-extensions')
+    var result = await settings
+        .get('enabled-extensions')
         .then((res) => res.asStringArray().contains('caffeine@patapon.info'));
     settings.close();
     return result;
@@ -46,20 +47,22 @@ class GnomeAwakeBackend extends AwakeBackend {
 
   @override
   Future<bool> enable(bool newValue) async {
-    return GnomeExtensionUtils.enableDisableExtension('caffeine@patapon.info', newValue).then((value) => true);
+    return GnomeExtensionUtils.enableDisableExtension(
+            'caffeine@patapon.info', newValue)
+        .then((value) => true);
   }
 
   @override
   Future<bool> isInstalled() async {
-    return _caffeineSettings.get('user-enabled')
-        .then((value) => true)
-        .onError((error, stackTrace) => false, test: (e) => e is GSettingsSchemaNotInstalledException);
+    return _caffeineSettings.get('user-enabled').then((value) => true).onError(
+        (error, stackTrace) => false,
+        test: (e) => e is GSettingsSchemaNotInstalledException);
   }
 
   @override
   Future<bool> install() async {
     return GnomeExtensionUtils.installRemoteExtension('caffeine@patapon.info')
-      .then((_) => true);
+        .then((_) => true);
   }
 
   @override
@@ -70,9 +73,10 @@ class GnomeAwakeBackend extends AwakeBackend {
   }
 
   void _setSetting(final String name, final DBusValue newValue) {
-    _caffeineSettings.set(name, newValue)
-    .then((value) => _logger.info("Set '$name' setting to $newValue"))
-    .onError((err, st) {
+    _caffeineSettings
+        .set(name, newValue)
+        .then((value) => _logger.info("Set '$name' setting to $newValue"))
+        .onError((err, st) {
       _logger.severe("Cannot SET setting '$name'", err, st);
     });
   }

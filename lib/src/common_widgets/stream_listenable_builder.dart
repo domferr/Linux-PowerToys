@@ -48,7 +48,8 @@ class StreamListenableBuilder<T> extends StatefulWidget {
   State<StatefulWidget> createState() => _StreamListenableBuilderState<T>();
 }
 
-class _StreamListenableBuilderState<T> extends State<StreamListenableBuilder<T>> {
+class _StreamListenableBuilderState<T>
+    extends State<StreamListenableBuilder<T>> {
   late T value;
   late StreamSubscription<T> streamSubscription;
 
@@ -76,7 +77,9 @@ class _StreamListenableBuilderState<T> extends State<StreamListenableBuilder<T>>
   }
 
   void _valueChanged(T newValue) {
-    setState(() { value = newValue; });
+    setState(() {
+      value = newValue;
+    });
   }
 
   @override

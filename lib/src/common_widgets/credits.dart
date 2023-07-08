@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Credits extends StatelessWidget {
   const Credits({
+    super.key,
     required this.name,
     required this.url,
   });
@@ -31,8 +32,7 @@ class Credits extends StatelessWidget {
             style: const TextStyle(
                 color: Colors.blue,
                 decoration: TextDecoration.underline,
-                decorationColor: Colors.blue
-            ),
+                decorationColor: Colors.blue),
             recognizer: TapGestureRecognizer()..onTap = _openWebPage,
           ),
           const TextSpan(text: ' '),

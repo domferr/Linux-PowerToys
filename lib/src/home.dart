@@ -117,30 +117,33 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          showHamburger ? Padding(
-            padding: const EdgeInsets.only(left: 4.0),
-            child: IconButton(
-              onPressed: handleMenuPress,
-              icon: const Icon(
-                Icons.menu,
-              ),
-            ),
-          ):const SizedBox(width: 4.0),
+          showHamburger
+              ? Padding(
+                  padding: const EdgeInsets.only(left: 4.0),
+                  child: IconButton(
+                    onPressed: handleMenuPress,
+                    icon: const Icon(
+                      Icons.menu,
+                    ),
+                  ),
+                )
+              : const SizedBox(width: 4.0),
           Padding(
-            padding: EdgeInsets.only(left: showHamburger ? 20.0:0.0),
+            padding: EdgeInsets.only(left: showHamburger ? 20.0 : 0.0),
             child: const Text('Linux PowerToys'),
           ),
         ],
       ),
       automaticallyImplyLeading: false, // Don't show the leading button
       scrolledUnderElevation: 0,
-      actions: [Padding(
+      actions: [
+        Padding(
           padding: const EdgeInsets.only(right: 16.0),
           child: _BrightnessButton(
-              handleBrightnessChange: widget.handleBrightnessChange,
-            ),
+            handleBrightnessChange: widget.handleBrightnessChange,
           ),
-        ],
+        ),
+      ],
     );
   }
 
@@ -152,22 +155,23 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
   }
 
   Widget _trailingActions() => Column(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: [
-      Flexible(
-        child: Tooltip(
-          preferBelow: false,
-          message: 'Give feedback or request a feature',
-          child: IconButton(
-            icon: const Icon(Icons.feedback),
-            onPressed: () => {
-              _launchURL('https://github.com/domferr/Linux-PowerToys/issues')
-            },
-          ),
-        ),
-      )
-    ],
-  );
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Flexible(
+            child: Tooltip(
+              preferBelow: false,
+              message: 'Give feedback or request a feature',
+              child: IconButton(
+                icon: const Icon(Icons.feedback),
+                onPressed: () => {
+                  _launchURL(
+                      'https://github.com/domferr/Linux-PowerToys/issues')
+                },
+              ),
+            ),
+          )
+        ],
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -182,9 +186,12 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           body: Expanded(
             child: Container(
               decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surfaceVariant.withOpacity(0.3),
-                  borderRadius: const BorderRadius.only(topLeft: Radius.circular(20))
-              ),
+                  color: Theme.of(context)
+                      .colorScheme
+                      .surfaceVariant
+                      .withOpacity(0.3),
+                  borderRadius:
+                      const BorderRadius.only(topLeft: Radius.circular(20))),
               child: createScreenFor(
                   ScreenSelected.values[screenIndex], controller.value == 1),
             ),
@@ -201,9 +208,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             },
             trailing: Expanded(
               child: Padding(
-              padding: const EdgeInsets.only(bottom: 20),
-              child: _trailingActions(),
-            ),
+                padding: const EdgeInsets.only(bottom: 20),
+                child: _trailingActions(),
+              ),
             ),
           ),
           navigationBar: _NavigationBars(
@@ -223,7 +230,6 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
 
 class _NavigationBars extends StatefulWidget {
   const _NavigationBars({
-    super.key,
     this.onSelectItem,
     required this.selectedIndex,
   });
@@ -274,17 +280,14 @@ class _NavigationBarsState extends State<_NavigationBars> {
 class _BrightnessButton extends StatelessWidget {
   const _BrightnessButton({
     required this.handleBrightnessChange,
-    this.showTooltipBelow = true,
   });
 
   final Function handleBrightnessChange;
-  final bool showTooltipBelow;
 
   @override
   Widget build(BuildContext context) {
     final isBright = Theme.of(context).brightness == Brightness.light;
     return Tooltip(
-      preferBelow: showTooltipBelow,
       message: 'Toggle brightness',
       child: IconButton(
         icon: isBright
@@ -296,63 +299,16 @@ class _BrightnessButton extends StatelessWidget {
   }
 }
 
-class _ExpandedTrailingActions extends StatelessWidget {
-  const _ExpandedTrailingActions({
-    required this.useLightMode,
-    required this.handleBrightnessChange,
-  });
-
-  final void Function(bool) handleBrightnessChange;
-
-  final bool useLightMode;
-
-  @override
-  Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final trailingActionsBody = Container(
-      constraints: const BoxConstraints.tightFor(width: 250),
-      padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Row(
-            children: [
-              const Text('Brightness'),
-              Expanded(child: Container()),
-              Switch(
-                  value: useLightMode,
-                  onChanged: (value) {
-                    handleBrightnessChange(value);
-                  })
-            ],
-          ),
-          Row(
-            children: [
-              const Text('BOH 1'),
-              Expanded(child: Container()),
-            ],
-          ),
-          const Divider(),
-        ],
-      ),
-    );
-    return screenHeight > 740
-        ? trailingActionsBody
-        : SingleChildScrollView(child: trailingActionsBody);
-  }
-}
-
 class NavigationTransition extends StatefulWidget {
   const NavigationTransition(
       {super.key,
-        required this.scaffoldKey,
-        required this.animationController,
-        required this.railAnimation,
-        required this.navigationRail,
-        required this.navigationBar,
-        required this.appBar,
-        required this.body});
+      required this.scaffoldKey,
+      required this.animationController,
+      required this.railAnimation,
+      required this.navigationRail,
+      required this.navigationBar,
+      required this.appBar,
+      required this.body});
 
   final GlobalKey<ScaffoldState> scaffoldKey;
   final AnimationController animationController;
@@ -417,59 +373,59 @@ class _NavigationTransitionState extends State<NavigationTransition> {
 final List<NavigationRailDestination> navRailDestinations = appBarDestinations
     .map(
       (destination) => NavigationRailDestination(
-    icon: Tooltip(
-      message: destination.label,
-      child: destination.icon,
-    ),
-    selectedIcon: Tooltip(
-      message: destination.label,
-      child: destination.selectedIcon,
-    ),
-    label: Text(destination.label),
-  ),
-)
+        icon: Tooltip(
+          message: destination.label,
+          child: destination.icon,
+        ),
+        selectedIcon: Tooltip(
+          message: destination.label,
+          child: destination.selectedIcon,
+        ),
+        label: Text(destination.label),
+      ),
+    )
     .toList();
 
 class SizeAnimation extends CurvedAnimation {
   SizeAnimation(Animation<double> parent)
       : super(
-    parent: parent,
-    curve: const Interval(
-      0.2,
-      0.8,
-      curve: Curves.easeInOutCubicEmphasized,
-    ),
-    reverseCurve: Interval(
-      0,
-      0.2,
-      curve: Curves.easeInOutCubicEmphasized.flipped,
-    ),
-  );
+          parent: parent,
+          curve: const Interval(
+            0.2,
+            0.8,
+            curve: Curves.easeInOutCubicEmphasized,
+          ),
+          reverseCurve: Interval(
+            0,
+            0.2,
+            curve: Curves.easeInOutCubicEmphasized.flipped,
+          ),
+        );
 }
 
 class OffsetAnimation extends CurvedAnimation {
   OffsetAnimation(Animation<double> parent)
       : super(
-    parent: parent,
-    curve: const Interval(
-      0.4,
-      1.0,
-      curve: Curves.easeInOutCubicEmphasized,
-    ),
-    reverseCurve: Interval(
-      0,
-      0.2,
-      curve: Curves.easeInOutCubicEmphasized.flipped,
-    ),
-  );
+          parent: parent,
+          curve: const Interval(
+            0.4,
+            1.0,
+            curve: Curves.easeInOutCubicEmphasized,
+          ),
+          reverseCurve: Interval(
+            0,
+            0.2,
+            curve: Curves.easeInOutCubicEmphasized.flipped,
+          ),
+        );
 }
 
 class RailTransition extends StatefulWidget {
   const RailTransition(
       {super.key,
-        required this.animation,
-        required this.backgroundColor,
-        required this.child});
+      required this.animation,
+      required this.backgroundColor,
+      required this.child});
 
   final Animation<double> animation;
   final Widget child;
@@ -521,9 +477,9 @@ class _RailTransition extends State<RailTransition> {
 class BarTransition extends StatefulWidget {
   const BarTransition(
       {super.key,
-        required this.animation,
-        required this.backgroundColor,
-        required this.child});
+      required this.animation,
+      required this.backgroundColor,
+      required this.child});
 
   final Animation<double> animation;
   final Color backgroundColor;

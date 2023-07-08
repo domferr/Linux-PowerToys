@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'setting_wrapper.dart';
-
 const horizontalPadding = 32.0;
 
 class CustomLayout extends StatelessWidget {
@@ -11,7 +9,7 @@ class CustomLayout extends StatelessWidget {
     required this.children,
     this.enableWidget,
   });
-  
+
   final Widget titleWidget;
   final Widget? enableWidget;
   final List<Widget> children;
@@ -29,14 +27,14 @@ class CustomLayout extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsetsDirectional.symmetric(horizontal: horizontalPadding),
+          padding: const EdgeInsetsDirectional.symmetric(
+              horizontal: horizontalPadding),
           sliver: SliverList(
             delegate: SliverChildListDelegate(<Widget>[
-                if (enableWidget != null) enableWidget!,
-                ...children,
-                const SizedBox(height: horizontalPadding),
-              ]
-            ),
+              if (enableWidget != null) enableWidget!,
+              ...children,
+              const SizedBox(height: horizontalPadding),
+            ]),
           ),
         ),
       ],

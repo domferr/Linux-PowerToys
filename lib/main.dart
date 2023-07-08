@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart';
 import 'dart:developer' as developer;
@@ -7,18 +8,17 @@ import 'src/constants.dart';
 import 'src/home.dart';
 
 void main() {
-  Logger.root.level = Level.ALL; // defaults to Level.INFO
+  Logger.root.level =
+      kDebugMode ? Level.ALL : Level.INFO; // defaults to Level.INFO
   Logger.root.onRecord.listen((record) {
-    developer.log(
-        '[${record.level.name}] ${record.message}',
+    developer.log('[${record.level.name}] ${record.message}',
         time: record.time,
         level: record.level.value,
         error: record.error,
         stackTrace: record.stackTrace,
         zone: record.zone,
         sequenceNumber: record.sequenceNumber,
-        name: record.loggerName
-    );
+        name: record.loggerName);
     debugPrint('[${record.level.name}] ${record.time}: ${record.message}');
   });
 
@@ -62,11 +62,11 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
     var navigationRailTheme = Theme.of(context).navigationRailTheme.copyWith(
-      unselectedLabelTextStyle: Theme.of(context).textTheme.titleMedium,
-      selectedLabelTextStyle: Theme.of(context).textTheme.titleMedium?.copyWith(
-        fontWeight: FontWeight.bold
-      )
-    );
+        unselectedLabelTextStyle: Theme.of(context).textTheme.titleMedium,
+        selectedLabelTextStyle: Theme.of(context)
+            .textTheme
+            .titleMedium
+            ?.copyWith(fontWeight: FontWeight.bold));
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -83,18 +83,15 @@ class _AppState extends State<App> {
         useMaterial3: true,
         brightness: Brightness.dark,
         navigationRailTheme: navigationRailTheme.copyWith(
-          selectedLabelTextStyle: navigationRailTheme.selectedLabelTextStyle?.copyWith(
-            color: Colors.white
-          ),
-          unselectedLabelTextStyle: navigationRailTheme.unselectedLabelTextStyle?.copyWith(
-            color: Colors.white70
-          ),
+          selectedLabelTextStyle: navigationRailTheme.selectedLabelTextStyle
+              ?.copyWith(color: Colors.white),
+          unselectedLabelTextStyle: navigationRailTheme.unselectedLabelTextStyle
+              ?.copyWith(color: Colors.white70),
         ),
       ),
       home: Home(
-        useLightMode: useLightMode,
-        handleBrightnessChange: handleBrightnessChange
-      ),
+          useLightMode: useLightMode,
+          handleBrightnessChange: handleBrightnessChange),
     );
   }
 }
