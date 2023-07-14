@@ -2,10 +2,10 @@
 file(TO_CMAKE_PATH "/home/dferraro/snap/flutter/common/flutter" FLUTTER_ROOT)
 file(TO_CMAKE_PATH "/mnt/Data/github/Linux-PowerToys" PROJECT_DIR)
 
-set(FLUTTER_VERSION "0.6.0-alpha" PARENT_SCOPE)
+set(FLUTTER_VERSION "0.6.1-alpha" PARENT_SCOPE)
 set(FLUTTER_VERSION_MAJOR 0 PARENT_SCOPE)
 set(FLUTTER_VERSION_MINOR 6 PARENT_SCOPE)
-set(FLUTTER_VERSION_PATCH 0 PARENT_SCOPE)
+set(FLUTTER_VERSION_PATCH 1 PARENT_SCOPE)
 set(FLUTTER_VERSION_BUILD 0 PARENT_SCOPE)
 
 # Environment variables to pass to tool_backend.sh

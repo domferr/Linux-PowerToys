@@ -246,8 +246,7 @@ class _SpanMultipleZones extends StatelessWidget {
               builder: (BuildContext context, bool newValue, Widget? child) {
                 return Switch(
                   value: newValue,
-                  onChanged:
-                      enabled ? backend.setSpanMultipleZones : null,
+                  onChanged: enabled ? backend.setSpanMultipleZones : null,
                 );
               },
             ),

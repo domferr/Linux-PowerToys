@@ -20,6 +20,7 @@ Linux PowerToys brings a set of utilities to tune and streamline Linux experienc
 | **Text Extractor**    | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **Image Resizer**     | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **Color Picker**      | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
+
 ## Project Attribution: Inspiring the Creation of Linux PowerToys
 
 **Linux PowerToys**, is an open-source initiative aimed at bringing the utilities of Microsoft PowerToys and more to the Linux world. However, it is important to note that this project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort but a complete reimplementation from scratch. The original Microsoft PowerToys does not support Linux, and therefore, a porting process is not feasible.
@@ -39,12 +40,8 @@ This software requires Flutter and Dart. Get started on [Flutter website](https:
 ## Run in debug mode
 
 ```
-export GSETTINGS_SCHEMA_DIR=\$GSETTINGS_SCHEMA_DIR:~/.local/share/gnome-shell/extensions/gSnap@micahosborne/schemas/:~/.local/share/gnome-shell/extensions/caffeine@patapon.info/schemas/; flutter run -d linux
+make run-debug
 ```
-
-## Built With
-
-* [Flutter](https://flutter.dev/) - It is an open source framework by Google for building beautiful, natively compiled, multi-platform applications from a single codebase.
 
 ## Contributing
 

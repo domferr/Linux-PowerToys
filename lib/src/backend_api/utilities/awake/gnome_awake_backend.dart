@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:dbus/dbus.dart';
 import 'package:gsettings/gsettings.dart';
@@ -25,7 +26,14 @@ class GnomeAwakeBackend extends AwakeBackend {
 
   /// Constructs a new instance of [GnomeAwakeBackend].
   GnomeAwakeBackend() {
-    _caffeineSettings = GSettings('org.gnome.shell.extensions.caffeine');
+    var homeDir = Platform.environment["HOME"];
+    _caffeineSettings = GSettings(
+      'org.gnome.shell.extensions.caffeine',
+      schemaDirs: [
+        '$homeDir/.local/share/gnome-shell/extensions/caffeine@patapon.info/schemas/'
+      ],
+    );
+
     _queryKeepAwakeValue();
     _caffeineSettings.keysChanged.listen(_handleKeysChanged);
   }

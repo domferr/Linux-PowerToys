@@ -60,7 +60,10 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
 
   /// Creates a new instance of the GnomeFancyZonesBackend.
   GnomeFancyZonesBackend() {
-    _gSnapSettings = GSettings('org.gnome.shell.extensions.gsnap');
+    var homeDir = Platform.environment["HOME"];
+    _gSnapSettings = GSettings('org.gnome.shell.extensions.gsnap', schemaDirs: [
+      '$homeDir/.local/share/gnome-shell/extensions/gSnap@micahosborne/schemas/'
+    ]);
     // initialize "window margin" and "span multiple zones" settings
     _queryWindowMarginValue();
     _querySpanMultipleZonesValue();
