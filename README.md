@@ -29,6 +29,9 @@ While the concept and inspiration for this project come from Microsoft PowerToys
 
 Please note that Linux PowerToys is licensed under the GPLv2 license. Any usage, distribution, or modification of the project should comply with the terms and conditions specified in the license.
 
+## Install
+Download the [latest](https://github.com/domferr/Linux-PowerToys/releases/download/v0.6.1-alpha/Linux.PowerToys-x64-release-0.6.1.zip) release. Extract the archive and go into the extracted folder. Then run the executable `linuxpowertoys`.
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
