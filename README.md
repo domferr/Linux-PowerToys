@@ -4,7 +4,9 @@
 
 _🚧 Get Microsoft's PowerToys utilities and much more to Linux world! This project is currently in a very early stage of development. Right now it is a prototype which demonstrates the feasibility of the concept._
 
-## About
+**Linux PowerToys**, is an open-source initiative aimed at bringing the utilities of Microsoft PowerToys and more to the Linux world. However, this project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort but a complete reimplementation from scratch. The original Microsoft PowerToys relies on Windows dependencies, and therefore, a porting process is not feasible.
+
+## Utilities
 
 Linux PowerToys brings a set of utilities to tune and streamline Linux experience for greater productivity.
 
@@ -21,16 +23,18 @@ Linux PowerToys brings a set of utilities to tune and streamline Linux experienc
 | **Image Resizer**     | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
 | **Color Picker**      | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
 
-## Project Attribution: Inspiring the Creation of Linux PowerToys
-
-**Linux PowerToys**, is an open-source initiative aimed at bringing the utilities of Microsoft PowerToys and more to the Linux world. However, it is important to note that this project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort but a complete reimplementation from scratch. The original Microsoft PowerToys does not support Linux, and therefore, a porting process is not feasible.
-
-While the concept and inspiration for this project come from Microsoft PowerToys, the development, design, and implementation of Linux PowerToys are entirely independent and community-driven. We would like to express our gratitude to the Microsoft PowerToys project for inspiring us to create this project for the Linux community.
-
-Please note that Linux PowerToys is licensed under the GPLv2 license. Any usage, distribution, or modification of the project should comply with the terms and conditions specified in the license.
-
 ## Install
 Download the [latest](https://github.com/domferr/Linux-PowerToys/releases/download/v0.6.1-alpha/Linux.PowerToys-x64-release-0.6.1.zip) release. Extract the archive and go into the extracted folder. Then run the executable `linuxpowertoys`.
+
+## Fancy Zones
+
+Fancy Zones are now available in the [latest](https://github.com/domferr/Linux-PowerToys/releases/download/v0.6.1-alpha/Linux.PowerToys-x64-release-0.6.1.zip) release! Let us know what do you think about :)
+
+
+### Creating a Layout
+![Creating a Layout](./doc/fz1-new-layout.gif)
+
+# Development
 
 ## Getting Started
 
