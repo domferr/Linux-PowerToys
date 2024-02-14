@@ -233,11 +233,16 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
   Map<String, dynamic> _zoneGroupToJson(ZoneGroup zoneGroup) {
     var res = <String, dynamic>{
       'type': zoneGroup.props.horizontal ? 0 : 1,
-      'length': (zoneGroup.props.perc * 100).toInt(),
+      'length': zoneGroup.props.perc.toInt(),
     };
 
     var items = zoneGroup.zones.map(_zoneGroupToJson).toList();
     if (items.isNotEmpty) {
+      var totalLen = items.map((e) => e["length"]).fold(0, (prev, curr) => prev + (curr as int));
+      if (totalLen < 100) {
+        var lastLen = items.last["length"] as int;
+        items.last.update("length", (value) => lastLen + (100 - totalLen));
+      }
       res['items'] = items;
     }
 
@@ -255,7 +260,7 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
 
     return ZoneGroup(
       horizontal: json["type"] as int == 0,
-      perc: (json["length"] as int) / 100,
+      perc: (json["length"] as int).toDouble(),
       zones: zones,
     );
   }

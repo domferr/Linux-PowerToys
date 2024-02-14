@@ -35,7 +35,7 @@ class ZoneWidget extends StatelessWidget {
     );
 
     return Expanded(
-      flex: (props.perc * 100.0).round(),
+      flex: props.perc.round(),
       child: Padding(
         padding: EdgeInsets.all(padding),
         child: onTap != null || onSecondaryTap != null

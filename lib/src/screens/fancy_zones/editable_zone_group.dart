@@ -59,7 +59,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
     return widget.zoneGroup.zones.mapIndexed((index, zone) {
       double separatorDim =
           index == widget.zoneGroup.zones.length - 1 ? 0.0 : separatorSize;
-      return (zone.props.perc * parentSize) - separatorDim;
+      return ((zone.props.perc / 100) * parentSize) - separatorDim;
     }).toList();
   }
 
@@ -68,7 +68,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
     var oldPerc = zoneAtIndex.props.perc;
     zoneAtIndex.props.perc = oldPerc / 2;
     // avoid splitting into two zones lower than 10%
-    if (zoneAtIndex.props.perc < minPercentage) return;
+    if (zoneAtIndex.props.perc < minPercentage * 100) return;
 
     widget.zoneGroup.zones
         .insert(index + 1, ZoneGroup(perc: oldPerc - zoneAtIndex.props.perc));
@@ -80,7 +80,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
   }
 
   void splitCurrentZone(bool isShiftPressed) {
-    widget.zoneGroup.zones = [ZoneGroup(perc: 0.5), ZoneGroup(perc: 0.5)];
+    widget.zoneGroup.zones = [ZoneGroup(perc: 50), ZoneGroup(perc: 50)];
     widget.zoneGroup.props.horizontal = !isShiftPressed;
     setState(() {
       sizes = createSizes();
@@ -145,7 +145,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
     // But ensure that 10% is reachable even if the user does a very fast movement to the right
     if (mouseDelta < 0 &&
         mouseOffset >
-            ((previousZone.props.perc + nextZone.props.perc - minPercentage) *
+            (((previousZone.props.perc / 100) + (nextZone.props.perc / 100) - minPercentage) *
                     mainSize) -
                 separatorSize +
                 sizeBeforeZonePairs) {
@@ -161,7 +161,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
     var newPrevPerc = (oldPrevPerc * newSize) / oldPrevSize;
     var newNextPrec = totalPercentage - newPrevPerc;
     // avoid going below 10% for both previous and next zones
-    if (newPrevPerc < minPercentage || newNextPrec < minPercentage) return;
+    if (newPrevPerc < minPercentage * 100 || newNextPrec < minPercentage * 100) return;
 
     previousZone.props.perc = newPrevPerc;
     nextZone.props.perc = newNextPrec;
@@ -194,7 +194,7 @@ class _EditableZoneGroupState extends State<EditableZoneGroup> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "${(widget.zoneGroup.props.perc * 100).toStringAsFixed(2)}%",
+                        "${(widget.zoneGroup.props.perc).toStringAsFixed(2)}%",
                         style: Theme.of(context).textTheme.labelLarge?.copyWith(
                               color: Theme.of(context)
                                   .textTheme

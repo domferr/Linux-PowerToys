@@ -49,35 +49,35 @@ abstract class FancyZonesBackend extends UtilityBackend {
 
   /// get the default layouts
   List<ZoneGroup> get defaultLayouts => [
-        ZoneGroup(zones: [ZoneGroup(perc: 0.4), ZoneGroup(perc: 0.6)]),
-        ZoneGroup(zones: [ZoneGroup(perc: 0.6), ZoneGroup(perc: 0.4)]),
+        ZoneGroup(zones: [ZoneGroup(perc: 40), ZoneGroup(perc: 60)]),
+        ZoneGroup(zones: [ZoneGroup(perc: 60), ZoneGroup(perc: 40)]),
         ZoneGroup(
-            zones: [ZoneGroup(perc: 0.4), ZoneGroup(perc: 0.6)],
+            zones: [ZoneGroup(perc: 40), ZoneGroup(perc: 60)],
             horizontal: false),
         ZoneGroup(zones: [
-          ZoneGroup(perc: 0.2),
-          ZoneGroup(perc: 0.6),
-          ZoneGroup(perc: 0.2)
+          ZoneGroup(perc: 20),
+          ZoneGroup(perc: 60),
+          ZoneGroup(perc: 20)
         ]),
         ZoneGroup(zones: [
-          ZoneGroup(perc: 0.5, horizontal: false, zones: [
-            ZoneGroup(perc: 0.5),
-            ZoneGroup(perc: 0.5),
+          ZoneGroup(perc: 50, horizontal: false, zones: [
+            ZoneGroup(perc: 50),
+            ZoneGroup(perc: 50),
           ]),
-          ZoneGroup(perc: 0.5, horizontal: false, zones: [
-            ZoneGroup(perc: 0.5),
-            ZoneGroup(perc: 0.5),
+          ZoneGroup(perc: 50, horizontal: false, zones: [
+            ZoneGroup(perc: 50),
+            ZoneGroup(perc: 50),
           ]),
         ]),
         ZoneGroup(zones: [
-          ZoneGroup(perc: 0.3, horizontal: false, zones: [
-            ZoneGroup(perc: 0.5),
-            ZoneGroup(perc: 0.5),
+          ZoneGroup(perc: 30, horizontal: false, zones: [
+            ZoneGroup(perc: 50),
+            ZoneGroup(perc: 50),
           ]),
-          ZoneGroup(perc: 0.4),
-          ZoneGroup(perc: 0.3, horizontal: false, zones: [
-            ZoneGroup(perc: 0.5),
-            ZoneGroup(perc: 0.5),
+          ZoneGroup(perc: 40),
+          ZoneGroup(perc: 30, horizontal: false, zones: [
+            ZoneGroup(perc: 50),
+            ZoneGroup(perc: 50),
           ]),
         ]),
       ];

@@ -112,7 +112,7 @@ class _ZoneGroupBuilder extends StatelessWidget {
           });
 
     return Expanded(
-      flex: (zoneGroup.props.perc * 100.0).round(),
+      flex: zoneGroup.props.perc.round(),
       child: zoneGroup.props.horizontal
           ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -279,7 +279,7 @@ class _NewLayoutButton extends StatelessWidget {
       builder: (context) => LayoutEditor(
           title: "Create new layout",
           layout:
-              ZoneGroup(zones: [ZoneGroup(perc: 0.7), ZoneGroup(perc: 0.3)]),
+              ZoneGroup(zones: [ZoneGroup(perc: 70), ZoneGroup(perc: 30)]),
           onSave: onSave),
     );
   }
@@ -289,18 +289,19 @@ class _NewLayoutButton extends StatelessWidget {
     _logger.finest("build() _NewLayoutButton");
 
     return ElevatedButton(
-        onPressed: enabled ? (() => openDialog(context)) : null,
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.all(0),
-          fixedSize:
-              const Size(_NewLayoutButton.width, _NewLayoutButton.height),
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(12)),
-          ),
+      onPressed: enabled ? (() => openDialog(context)) : null,
+      style: ElevatedButton.styleFrom(
+        padding: const EdgeInsets.all(0),
+        fixedSize:
+            const Size(_NewLayoutButton.width, _NewLayoutButton.height),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(12)),
         ),
-        child: const Icon(
-          Icons.add,
-          size: 84,
-        ));
+      ),
+      child: const Icon(
+        Icons.add,
+        size: 84,
+      )
+    );
   }
 }
