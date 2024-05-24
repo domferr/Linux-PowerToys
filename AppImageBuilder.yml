@@ -1,0 +1,69 @@
+# appimage-builder recipe see https://appimage-builder.readthedocs.io for details
+version: 1
+script:
+  - rm -rf AppDir || true
+  - mkdir AppDir/usr/bin -p
+  - cp -r build/linux/x64/release/bundle/* AppDir/usr/bin
+  - mkdir -p AppDir/usr/share/icons/hicolor/64x64/apps/
+  - mkdir -p AppDir/usr/share/icons/hicolor/48x48/apps/
+  #- mv AppDir/lib/ AppDir/usr/
+  - cp assets/images/app_icon_48x48.png AppDir/usr/share/icons/hicolor/48x48/apps/linuxpowertoys.png
+  - cp assets/images/app_icon_256x256.png AppDir/usr/share/icons/hicolor/64x64/apps/linuxpowertoys.png
+AppDir:
+  path: /AppDir
+  app_info:
+    id: com.ferrarodomenico.linuxpowertoys
+    name: LinuxPowerToys
+    icon: linuxpowertoys
+    version: latest
+    exec: usr/bin/linuxpowertoys
+    exec_args: $@
+  apt:
+    arch:
+      - amd64
+    allow_unauthenticated: true
+    sources:
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic main restricted
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic-updates main restricted
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic universe
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic-updates universe
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic multiverse
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic-updates multiverse
+      - sourceline: deb http://archive.ubuntu.com/ubuntu/ bionic-backports main restricted
+          universe multiverse
+      - sourceline: deb http://security.ubuntu.com/ubuntu/ bionic-security main restricted
+      - sourceline: deb http://security.ubuntu.com/ubuntu/ bionic-security universe
+      - sourceline: deb http://security.ubuntu.com/ubuntu/ bionic-security multiverse
+    include: []
+  files:
+    include: []
+    exclude:
+      - usr/share/man
+      - usr/share/doc/*/README.*
+      - usr/share/doc/*/changelog.*
+      - usr/share/doc/*/NEWS.*
+      - usr/share/doc/*/TODO.*
+  test:
+    fedora-30:
+      image: appimagecrafters/tests-env:fedora-30
+      command: ./AppRun
+      use_host_x: true
+    debian-stable:
+      image: appimagecrafters/tests-env:debian-stable
+      command: ./AppRun
+      use_host_x: true
+    archlinux-latest:
+      image: appimagecrafters/tests-env:archlinux-latest
+      command: ./AppRun
+      use_host_x: true
+    centos-7:
+      image: appimagecrafters/tests-env:centos-7
+      command: ./AppRun
+      use_host_x: true
+    ubuntu-xenial:
+      image: appimagecrafters/tests-env:ubuntu-xenial
+      command: ./AppRun
+      use_host_x: true
+AppImage:
+  arch: x86_64
+  update-information: guess

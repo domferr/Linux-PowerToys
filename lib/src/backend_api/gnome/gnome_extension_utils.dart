@@ -13,7 +13,15 @@ class GnomeExtensionUtils {
         path: DBusObjectPath("/org/gnome/Shell/Extensions"),
         name: "InstallRemoteExtension",
         interface: "org.gnome.Shell.Extensions",
+        noReplyExpected: true,
         values: [DBusString(uuid)]);
+  }
+  static Future<ProcessResult> uninstallExtension(String uuid) {
+    return enableDisableExtension(uuid, false).then((value) {
+      // gnome-extensions uninstall <uuid>
+      var shell = Shell();
+      return shell.run('gnome-extensions', arguments: ['uninstall', uuid]);
+    });
   }
 
   static Future<ProcessResult> enableDisableExtension(

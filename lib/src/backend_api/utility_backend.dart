@@ -12,6 +12,9 @@ abstract class UtilityBackend {
   /// Installs the utility.
   Future<void> install();
 
+  /// Installs the utility.
+  Future<void> uninstall();
+
   /// Cleans up any resources used by the backend.
   void dispose();
 }

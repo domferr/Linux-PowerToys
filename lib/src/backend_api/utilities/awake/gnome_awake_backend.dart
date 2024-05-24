@@ -70,7 +70,30 @@ class GnomeAwakeBackend extends AwakeBackend {
   @override
   Future<bool> install() async {
     return GnomeExtensionUtils.installRemoteExtension('caffeine@patapon.info')
-        .then((_) => true);
+        .then((_) {
+      var elapsed = 0;
+      final completer = Completer<bool>();
+      Timer.periodic(const Duration(milliseconds: 600), (timer) async {
+        if (await isInstalled()) {
+          timer.cancel();
+          completer.complete(true);
+          return;
+        }
+        elapsed += 5;
+        if (elapsed >= 60) {
+          timer.cancel();
+          completer.complete(false);
+        }
+      });
+      return completer.future;
+    });
+  }
+
+  @override
+  Future<void> uninstall() async {
+    return GnomeExtensionUtils.uninstallExtension(
+        'caffeine@patapon.info')
+        .then((value) => true);
   }
 
   @override

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linuxpowertoys/src/screens/color_picker/color_picker_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'screens/awake/awake_screen.dart';
@@ -100,6 +101,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         return const FancyZonesScreen();
       case ScreenSelected.awake:
         return const AwakeScreen();
+      case ScreenSelected.colorpicker:
+        return const ColorPickerScreen();
     }
   }
 

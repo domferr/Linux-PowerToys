@@ -1,10 +1,10 @@
-import 'package:linuxpowertoys/src/backend_api/utilities/fancy_zones/zone_group.dart';
+import 'package:linuxpowertoys/src/backend_api/tile.dart';
 import 'package:linuxpowertoys/src/backend_api/utility_backend.dart';
+
+import '../../layout.dart';
 
 /// Abstract class representing the backend for the "FancyZones" utility.
 abstract class FancyZonesBackend extends UtilityBackend {
-  Future<void> init();
-
   /// Stream for the "span multiple zones" status.
   Stream<bool> get spanMultipleZones;
 
@@ -12,73 +12,67 @@ abstract class FancyZonesBackend extends UtilityBackend {
   bool get lastSpanMultipleZones;
 
   /// Sets the "span multiple zones" status to the specified [newValue].
-  setSpanMultipleZones(bool newValue);
+  setSpanMultipleTiles(bool newValue);
 
   /// Stream for the "window margin" value.
-  Stream<int> get windowMargin;
+  Stream<int> get innerGaps;
 
   /// Sets the window margin value to the specified [newValue].
-  setWindowMargin(int newValue);
+  setInnerGaps(int newValue);
 
-  /// get the last "window margin" value.
-  int get lastWindowMargin;
+  /// get the last "inner gaps" value.
+  int get lastInnerGaps;
+
+  /// Stream for the "outer gaps" value.
+  Stream<int> get outerGaps;
+
+  /// Sets the outer gaps value to the specified [newValue].
+  setOuterGaps(int newValue);
+
+  /// get the last "outer gaps" value.
+  int get lastOuterGaps;
 
   /// Stream for listening to layouts change.
-  Stream<List<ZoneGroup>> get layouts;
+  Stream<List<Layout>> get layouts;
 
   /// get the last layouts.
-  List<ZoneGroup> get lastLayouts;
+  List<Layout> get lastLayouts;
 
   /// Stream for listening to changes on the selected layout.
-  Stream<int> get selectedLayoutIndex;
+  Stream<List<String>> get selectedLayouts;
 
   /// get the last selected layout index.
-  int get lastSelectedLayoutIndex;
+  List<String> get lastSelectedLayouts;
 
   /// Select the layout at index [index]
-  Future<void> selectLayout(int newIndex);
+  Future<void> selectLayout(String layoutId);
 
   /// Add the given layout to the list of layouts
-  Future<void> addLayout(ZoneGroup newLayout);
+  Future<void> addLayout(Layout newLayout);
 
   /// Remove the given layout from the list of layouts
-  Future<void> removeLayoutAt(int index);
+  Future<void> removeLayout(String layoutId);
 
-  /// Edit the layout from the posi
-  Future<void> editLayoutAt(int index, ZoneGroup edited);
+  /// Edit the layout
+  Future<void> editLayout(String layoutId);
 
   /// get the default layouts
-  List<ZoneGroup> get defaultLayouts => [
-        ZoneGroup(zones: [ZoneGroup(perc: 40), ZoneGroup(perc: 60)]),
-        ZoneGroup(zones: [ZoneGroup(perc: 60), ZoneGroup(perc: 40)]),
-        ZoneGroup(
-            zones: [ZoneGroup(perc: 40), ZoneGroup(perc: 60)],
-            horizontal: false),
-        ZoneGroup(zones: [
-          ZoneGroup(perc: 20),
-          ZoneGroup(perc: 60),
-          ZoneGroup(perc: 20)
-        ]),
-        ZoneGroup(zones: [
-          ZoneGroup(perc: 50, horizontal: false, zones: [
-            ZoneGroup(perc: 50),
-            ZoneGroup(perc: 50),
-          ]),
-          ZoneGroup(perc: 50, horizontal: false, zones: [
-            ZoneGroup(perc: 50),
-            ZoneGroup(perc: 50),
-          ]),
-        ]),
-        ZoneGroup(zones: [
-          ZoneGroup(perc: 30, horizontal: false, zones: [
-            ZoneGroup(perc: 50),
-            ZoneGroup(perc: 50),
-          ]),
-          ZoneGroup(perc: 40),
-          ZoneGroup(perc: 30, horizontal: false, zones: [
-            ZoneGroup(perc: 50),
-            ZoneGroup(perc: 50),
-          ]),
-        ]),
-      ];
+  List<Layout> get defaultLayouts => [
+    Layout(id: "the id", tiles: [
+      Tile(x: 0, y: 0, width: 0.22, height: 0.5),
+      Tile(x: 0, y: 0.5, width: 0.22, height: 0.5),
+      Tile(x: 0.22, y: 0, width: 0.56, height: 1),
+      Tile(x: 0.78, y: 0, width: 0.22, height: 0.5),
+      Tile(x: 0.78, y: 0.5, width: 0.22, height: 0.5),
+    ])
+  ];
+
+  /// Stream for the "enable snap assistant" value.
+  Stream<bool> get enableSnapAssistant;
+
+  /// Sets the enable snap assistant value to the specified [newValue].
+  setEnableSnapAssistant(bool newValue);
+
+  /// get the last "enable snap assistant" value.
+  bool get lastEnableSnapAssistant;
 }

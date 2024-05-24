@@ -85,18 +85,18 @@ class _GeneralScreenState extends State<GeneralScreen> {
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 48.0),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                const Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: spaceBetweenLinks,
+                  runSpacing: 6,
                   children: [
                     LinkText(
                         url: 'https://github.com/domferr/Linux-PowerToys',
                         placeholder: 'GitHub repository'),
-                    SizedBox(width: spaceBetweenLinks),
                     LinkText(
                         url:
                             'https://github.com/domferr/Linux-PowerToys/issues',
                         placeholder: 'Report a bug'),
-                    SizedBox(width: spaceBetweenLinks),
                     LinkText(
                         url:
                             'https://github.com/domferr/Linux-PowerToys/issues',

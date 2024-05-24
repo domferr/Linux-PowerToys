@@ -27,9 +27,9 @@ class LinkText extends StatelessWidget {
       child: Text(
         placeholder,
         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: Colors.blue.shade600,
-            ),
+          fontWeight: FontWeight.bold,
+          color: Colors.blue.shade600,
+        ),
       ),
     );
   }

@@ -2,20 +2,22 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
-#ifndef FLUTTER_SHELL_PLATFORM_LINUX_FL_TEXTURE_REGISTRAR_H_
-#define FLUTTER_SHELL_PLATFORM_LINUX_FL_TEXTURE_REGISTRAR_H_
+#ifndef FLUTTER_SHELL_PLATFORM_LINUX_PUBLIC_FLUTTER_LINUX_FL_TEXTURE_REGISTRAR_H_
+#define FLUTTER_SHELL_PLATFORM_LINUX_PUBLIC_FLUTTER_LINUX_FL_TEXTURE_REGISTRAR_H_
 
 #if !defined(__FLUTTER_LINUX_INSIDE__) && !defined(FLUTTER_LINUX_COMPILATION)
 #error "Only <flutter_linux/flutter_linux.h> can be included directly."
 #endif
 
 #include <glib-object.h>
+#include <gmodule.h>
 #include <stdint.h>
 
 #include "fl_texture.h"
 
 G_BEGIN_DECLS
 
+G_MODULE_EXPORT
 G_DECLARE_INTERFACE(FlTextureRegistrar,
                     fl_texture_registrar,
                     FL,
@@ -88,4 +90,4 @@ gboolean fl_texture_registrar_unregister_texture(FlTextureRegistrar* registrar,
 
 G_END_DECLS
 
-#endif  // FLUTTER_SHELL_PLATFORM_LINUX_FL_TEXTURE_REGISTRAR_H_
+#endif  // FLUTTER_SHELL_PLATFORM_LINUX_PUBLIC_FLUTTER_LINUX_FL_TEXTURE_REGISTRAR_H_

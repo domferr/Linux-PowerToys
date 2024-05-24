@@ -2,7 +2,7 @@ name: linuxpowertoys
 description: Bring Microsoft's PowerToys utilities to Linux world!
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 0.6.1-alpha
+version: 0.8.0-preview
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -22,19 +22,23 @@ dependencies:
   dbus: ^0.7.8
   shell: ^2.0.0
   logging: ^1.2.0
-  package_info_plus: ^4.0.2
+  package_info_plus: ^8.0.0
   collection: ^1.17.1
+  colornames: ^0.1.0
+  archive: ^3.6.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  integration_test:
-    sdk: flutter
-  flutter_lints: ^2.0.0
+  #integration_test:
+  #  sdk: flutter
+  flutter_lints: ^3.0.2
 
 flutter:
   uses-material-design: true
 
   assets:
+    - assets/images/app_icon_48x48.png
+    - assets/images/app_icon_256x256.png
     - assets/images/FancyZones.png
     - assets/images/General.png

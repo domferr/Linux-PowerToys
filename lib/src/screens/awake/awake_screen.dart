@@ -5,7 +5,11 @@ import 'package:linuxpowertoys/src/common_widgets/credits.dart';
 import 'package:linuxpowertoys/src/common_widgets/screen_layout.dart';
 import 'package:logging/logging.dart';
 
+import '../../common_widgets/setting_wrapper.dart';
+import '../../common_widgets/uninstall_setting.dart';
 import 'awake_settings.dart';
+
+final _logger = Logger('AwakeScreen');
 
 class AwakeScreen extends StatefulWidget {
   const AwakeScreen({
@@ -17,7 +21,6 @@ class AwakeScreen extends StatefulWidget {
 }
 
 class _AwakeScreenState extends State<AwakeScreen> {
-  final _logger = Logger('AwakeScreen');
   final AwakeBackend backend = GnomeAwakeBackend();
 
   bool isEnabled = false;
@@ -81,6 +84,10 @@ class _AwakeScreenState extends State<AwakeScreen> {
     });
   }
 
+  void handleUninstallPressed() {
+    backend.uninstall().then((_) => asyncInitState());
+  }
+
   @override
   Widget build(BuildContext context) {
     _logger.finest("build() _AwakeScreenState");
@@ -110,6 +117,7 @@ class _AwakeScreenState extends State<AwakeScreen> {
       children: isInstalled
           ? [
               AwakeSettings(enabled: isEnabled, backend: backend),
+              UninstallSetting(onUninstall: handleUninstallPressed),
             ]
           : [],
     );

@@ -11,7 +11,8 @@ const baseColor = Colors.blue;
 enum ScreenSelected {
   general(0),
   fancyzones(1),
-  awake(2);
+  awake(2),
+  colorpicker(3);
 
   const ScreenSelected(this.value);
   final int value;
@@ -35,5 +36,11 @@ const List<NavigationDestination> appBarDestinations = [
     icon: Icon(Icons.coffee_outlined),
     label: 'Awake',
     selectedIcon: Icon(Icons.coffee_sharp),
+  ),
+  NavigationDestination(
+    tooltip: '',
+    icon: Icon(Icons.colorize_sharp),
+    label: 'Color Picker',
+    selectedIcon: Icon(Icons.colorize_sharp),
   ),
 ];

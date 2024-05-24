@@ -1,10 +1,11 @@
 # Linux PowerToys
+
 ![Hero image for Linux PowerToys](./HeroImage.png)
 
+> [!IMPORTANT]
+> <img src="https://raw.githubusercontent.com/domferr/Linux-PowerToys/v0.8/assets/images/app_icon_256x256.png" align="left" width="64"/> This project is currently in a very early stage of development. 🚧 Get Microsoft's PowerToys utilities and much more to Linux world! This project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort, but a _complete reimplementation from scratch_. Currently supports GNOME desktop environment only.
 
-_🚧 Get Microsoft's PowerToys utilities and much more to Linux world! This project is currently in a very early stage of development. Right now it is a prototype which demonstrates the feasibility of the concept._
-
-**Linux PowerToys**, is an open-source initiative aimed at bringing the utilities of Microsoft PowerToys and more to the Linux world. However, this project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort but a complete reimplementation from scratch. The original Microsoft PowerToys relies on Windows dependencies, and therefore, a porting process is not feasible.
+Have issues, you want to suggest a new feature or contribute? Please open a new [issue](https://github.com/domferr/modernwindowmanager/issues)!
 
 ## Utilities
 
@@ -13,38 +14,40 @@ Linux PowerToys brings a set of utilities to tune and streamline Linux experienc
 |                       | Utilities                                                                                                                                                                                                                                                                                                                                                                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **Awake**             | Keep the computer awake without having to manage its power & sleep settings. This behaviour can be helpful when running time-consuming tasks, ensuring that the computer does not go to sleep or turn off its screens.                                                                                                                                                                                                      |
-| **FancyZones**        | Window management utility that organizes and snaps windows into efficient layouts to enhance workflow speed and quickly restore layouts. FancyZones allows you to define a set of zone positions to use as destinations for windows on the desktop. When dragging a window into a zone or using the associated shortcut key, the window is resized and repositioned to fit that zone. [Learn more...](./doc/FANCY_ZONES.md) |
-| **Run**               | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Rename**            | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Hosts File Editor** | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Mouse utilities**   | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Quick Accent**      | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Text Extractor**    | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Image Resizer**     | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
-| **Color Picker**      | To be implemented...                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **FancyZones**        | Window management utility that organizes and snaps windows into efficient layouts to enhance workflow speed and quickly restore layouts. FancyZones allows you to define a set of zone positions to use as destinations for windows on the desktop. [Learn more...](./doc/FANCY_ZONES.md) |
+| **Snap Assistant**    | The Snap Assistant tool will appear moving the window on top of the screen. You can choose where to place and how to resize the window. |
+| **Color Picker**      | A system-wide color picking utility for Linux to pick colors from any screen and copy it to the clipboard. |
+| **To be implemented...**            | Rename, Hosts File Editor, Mouse utilities, Quick Accent, Text Extractor, Image Resizer. You want to suggest a new feature or contribute? Please open a new [issue](https://github.com/domferr/modernwindowmanager/issues)!                                                                                                                                                                                                                                                                                                                                                                                                         |
 
-## Install
-Download the [latest](https://github.com/domferr/Linux-PowerToys/releases/download/v0.6.1-alpha/Linux.PowerToys-x64-release-0.6.1.zip) release. Extract the archive and go into the extracted folder. Then run the executable `linuxpowertoys`.
+## Usage
+Download the [latest](https://github.com/domferr/Linux-PowerToys/releases) release and enjoy! Install the utilities you want, and then you can enable them and change their settings.
 
-## Fancy Zones
+### Fancy Zones ###
+When grabbing and moving a window, press <kbd>CTRL</kbd> key to show the tiling layout. When moving on a tile, it will highlight. Ungrab the window to place that window on the highlighted tile.
 
-Fancy Zones are now available in the [latest](https://github.com/domferr/Linux-PowerToys/releases/download/v0.6.1-alpha/Linux.PowerToys-x64-release-0.6.1.zip) release! Let us know what do you think about :)
+[tiling_system.webm](https://github.com/domferr/modernwindowmanager/assets/14203981/a45ec416-ad39-458d-9b9f-cddce8b25666)
 
+### Fancy Zones Editor ###
+> <kbd>LEFT CLICK</kbd> to split a tile. <kbd>LEFT CLICK</kbd> + <kbd>CTRL</kbd> to split a tile _vertically_. <kbd>RIGHT CLICK</kbd> to delete a tile.
 
-### Creating a Layout
-![Creating a Layout](./doc/fz1-new-layout.gif)
+[layout_editor.webm](https://github.com/domferr/modernwindowmanager/assets/14203981/c6e05589-69d9-4fa3-a4df-61ee875cf9e1)
+
+### Snap Assistant ###
+When grabbing and moving a window, the snap assistant will be available on top of the screen. Move the window near it to activate the snap assistant. While still grabbing the window, move your mouse to the tile you are interested in. By stopping grabbing the window will be tiled to the selected tile!
+
+[snap_assistant.webm](https://github.com/domferr/modernwindowmanager/assets/14203981/33511582-fa92-445e-b1ba-8b08f9a8e43a)
+
+### Color Picker ###
+A system-wide color picking utility for Linux to pick colors from any screen and copy it to the clipboard.
+
+![color_picker_preview](https://github.com/domferr/Linux-PowerToys/assets/14203981/fcd32c94-ee9d-4647-ab24-71e754948667)
 
 # Development
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
-
 ### Prerequisites
 
 This software requires Flutter and Dart. Get started on [Flutter website](https://docs.flutter.dev/get-started/install)
 
-## Run in debug mode
+### Run in debug mode
 
 ```
 make run-debug

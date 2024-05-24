@@ -9,7 +9,7 @@ import 'src/home.dart';
 
 void main() {
   Logger.root.level =
-      kDebugMode ? Level.ALL : Level.INFO; // defaults to Level.INFO
+      kDebugMode ? Level.ALL : Level.WARNING; // defaults to Level.INFO
   Logger.root.onRecord.listen((record) {
     developer.log('[${record.level.name}] ${record.message}',
         time: record.time,
@@ -24,7 +24,7 @@ void main() {
 
   WidgetsFlutterBinding.ensureInitialized();
 
-  setWindowTitle('Linux PowerToys');
+  setWindowTitle('Linux PowerToys | v0.8 - Preview');
   setWindowMinSize(const Size(700, 500));
   setWindowMaxSize(Size.infinite);
 
