@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extensions">
+    <schema path="/com/github/linux-powertoys/utilities/run/vscode/" id="com.github.linux-powertoys.utilities.run.vscode">
+		<!-- general plugin settings -->
+		<key type="b" name="enabled">
+			<default>false</default>
+			<summary>Whether the git plugin should be enabled</summary>
+		</key>
+
+		<key type="s" name="activation-prefix">
+			<default>'{'</default>
+			<summary>Which char should be used to activate only the git plugin</summary>
+		</key>
+    </schema>
+</schemalist>

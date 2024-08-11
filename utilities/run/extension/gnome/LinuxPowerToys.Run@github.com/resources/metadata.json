@@ -1,0 +1,10 @@
+{
+  "name": "Linux PowerToys Run",
+  "description": "Integrates the Linux PowerToys Run Utility into gnome",
+  "uuid": "LinuxPowerToys.Run@github.com",
+  "settings-schema": "org.gnome.shell.extensions.linux-powertoys-run",
+  "shell-version": [
+    "46"
+  ],
+  "version-name": "0"
+}

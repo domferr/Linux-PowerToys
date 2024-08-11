@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-const cardInternalPadding =
-    EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0);
+const cardInternalPadding = EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0);
 
 class CustomCard extends StatefulWidget {
   const CustomCard({
     super.key,
     required this.child,
+    this.margin = const EdgeInsets.all(0),
   });
 
   final Widget child;
+  final EdgeInsets margin;
 
   @override
   State<CustomCard> createState() => _CustomCardState();
@@ -30,7 +31,7 @@ class _CustomCardState extends State<CustomCard> {
           },
           behavior: HitTestBehavior.opaque,
           child: Card(
-            margin: const EdgeInsets.all(0),
+            margin: widget.margin,
             elevation: 0,
             shape: RoundedRectangleBorder(
               side: BorderSide(

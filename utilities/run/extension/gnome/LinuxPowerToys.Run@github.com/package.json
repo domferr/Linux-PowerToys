@@ -1,0 +1,31 @@
+{
+  "name": "linux_powertoys_run",
+  "version": "0.0.1",
+  "description": "Integrates the Linux PowerToys Run Utility into gnome",
+  "main": "extension.ts",
+  "scripts": {
+    "build": "npm run clean && node esbuild.mjs && npm run build:schema",
+    "clean": "rm -rf dist; rm -rf dist_legacy",
+    "build:schema": "npm run clean:schema && glib-compile-schemas ./resources/schemas --targetdir=./dist/schemas/ && cp ./dist/schemas/ ./dist_legacy/ -r",
+    "clean:schema": "rm -rf ./dist/schemas/*.compiled; rm -rf ./dist_legacy/schemas/*.compiled",
+    "install:extension": "mkdir -p ~/.local/share/gnome-shell/extensions/LinuxPowerToys.Run@github.com && cp ./dist$([ $(gnome-shell --version | grep -o -E '[0-9]+' | head -n 1) -le 44 ] && echo '_legacy')/* ~/.local/share/gnome-shell/extensions/LinuxPowerToys.Run@github.com/ -r"
+  },
+  "repository": {
+    "type": "git",
+    "url": "todo"
+  },
+  "author": "Johannes Marte",
+  "license": "ISC",
+  "devDependencies": {
+    "esbuild": "^0.20.2",
+    "esbuild-sass-plugin": "^3.2.0",
+    "eslint": "^9.7.0",
+    "eslint-plugin-jsdoc": "^48.8.3",
+    "glob": "^10.3.12",
+    "typescript": "^5.5.3"
+  },
+  "dependencies": {
+    "@girs/gjs": "^4.0.0-beta.9",
+    "@girs/gnome-shell": "^46.0.1"
+  }
+}

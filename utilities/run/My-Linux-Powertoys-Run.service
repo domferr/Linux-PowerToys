@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Linux-PowerToys run
+
+[Service]
+Type=simple
+User=1000
+Group=1000
+Environment="DISPLAY=:0.0"
+ExecStart=/home/johannes/Documents/projects/open_source/My-Linux-PowerToys/utilities/run/build/linux/x64/release/bundle/run
+
+[Install]
+WantedBy=multi-user.target

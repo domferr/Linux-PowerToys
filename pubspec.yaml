@@ -27,6 +27,8 @@ dependencies:
   colornames: ^0.1.0
   archive: ^3.6.0
   shared_preferences: ^2.2.3
+  expandable: ^5.0.1
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
@@ -43,3 +45,4 @@ flutter:
     - assets/images/app_icon_256x256.png
     - assets/images/FancyZones.png
     - assets/images/General.png
+    - assets/images/Run.png

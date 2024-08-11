@@ -12,7 +12,8 @@ enum ScreenSelected {
   general(0),
   fancyzones(1),
   awake(2),
-  colorpicker(3);
+  colorpicker(3),
+  run(4);
 
   const ScreenSelected(this.value);
   final int value;
@@ -42,5 +43,11 @@ const List<NavigationDestination> appBarDestinations = [
     icon: Icon(Icons.colorize_sharp),
     label: 'Color Picker',
     selectedIcon: Icon(Icons.colorize_sharp),
+  ),
+  NavigationDestination(
+    tooltip: '',
+    icon: Icon(Icons.double_arrow_sharp),
+    label: 'Run',
+    selectedIcon: Icon(Icons.double_arrow_sharp),
   ),
 ];

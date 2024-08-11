@@ -6,6 +6,7 @@ import 'screens/awake/awake_screen.dart';
 import 'constants.dart';
 import 'screens/general/general_screen.dart';
 import 'screens/fancy_zones/fancy_zones_screen.dart';
+import 'screens/run/run_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({
@@ -103,6 +104,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         return const AwakeScreen();
       case ScreenSelected.colorpicker:
         return const ColorPickerScreen();
+      case ScreenSelected.run:
+        return const RunScreen();
     }
   }
 

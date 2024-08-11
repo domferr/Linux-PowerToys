@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extensions">
+    <schema path="/com/github/linux-powertoys/utilities/run/git/" id="com.github.linux-powertoys.utilities.run.git">
+		<!-- general plugin settings -->
+		<key type="b" name="enabled">
+			<default>false</default>
+			<summary>Whether the git plugin should be enabled</summary>
+		</key>
+
+		<key type="s" name="activation-prefix">
+			<default>':'</default>
+			<summary>Which char should be used to activate only the git plugin</summary>
+		</key>
+
+		<!-- Search paths -->
+		<key type="as" name="search-paths">
+			<default>["$HOME"]</default>
+			<summary>Directories to search in</summary>
+		</key>
+
+		<key type="as" name="exclude-search-paths">
+			<default>["/**/.*"]</default>
+			<summary>Directories which should be ignored</summary>
+		</key>
+    </schema>
+</schemalist>

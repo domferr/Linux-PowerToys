@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="gnome-shell-extensions">
+    <schema path="/org/gnome/shell/extensions/linux-powertoys-run/" id="org.gnome.shell.extensions.linux-powertoys-run">
+        <!-- keybindings -->
+		<key type="as" name="summon-keybinding">
+			<default><![CDATA[['<Alt>Space']]]></default>
+			<summary>Keybinding for summon Linux PowerToys Run utility</summary>
+		</key>
+    </schema>
+</schemalist>
