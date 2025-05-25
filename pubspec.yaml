@@ -2,7 +2,7 @@ name: linuxpowertoys
 description: Bring Microsoft's PowerToys utilities to Linux world!
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 0.8.1
+version: 0.9.0
 
 environment:
   sdk: '>=3.0.5 <4.0.0'
@@ -27,6 +27,7 @@ dependencies:
   colornames: ^0.1.0
   archive: ^3.6.0
   shared_preferences: ^2.2.3
+  simple_icons: ^10.1.3
 
 dev_dependencies:
   flutter_test:

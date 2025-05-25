@@ -363,7 +363,7 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
   @override
   openMoreSettings() async {
     // we are doing the following
-    // gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/TilingShell --method org.gnome.Shell.Extensions.TilingShell.openLayoutEditor
+    // gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.LaunchExtensionPrefs 'tilingshell@ferrarodomenico.com'
     var client = DBusClient.session();
     var object = DBusRemoteObject(client,
         name: 'org.gnome.Shell.Extensions',

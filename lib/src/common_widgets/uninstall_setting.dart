@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:linuxpowertoys/src/backend_api/utility_backend.dart';
 import 'package:linuxpowertoys/src/common_widgets/setting_wrapper.dart';
-
-import 'custom_card.dart';
 
 class UninstallSetting extends StatelessWidget {
   const UninstallSetting({

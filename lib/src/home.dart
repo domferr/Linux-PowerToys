@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linuxpowertoys/src/screens/color_picker/color_picker_screen.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'screens/awake/awake_screen.dart';
@@ -157,24 +158,49 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     }
   }
 
-  Widget _trailingActions() => Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: [
-          Flexible(
-            child: Tooltip(
-              preferBelow: false,
-              message: 'Give feedback or request a feature',
-              child: IconButton(
-                icon: const Icon(Icons.feedback),
-                onPressed: () => {
-                  _launchURL(
-                      'https://github.com/domferr/Linux-PowerToys/issues')
-                },
-              ),
-            ),
-          )
-        ],
-      );
+  List<Widget> _getTrailingActionsButtons() {
+    return [
+      Tooltip(
+        preferBelow: false,
+        message: 'Give feedback or request a feature',
+        child: IconButton(
+          icon: const Icon(Icons.feedback),
+          onPressed: () => {
+            _launchURL(
+                'https://github.com/domferr/Linux-PowerToys/issues')
+          },
+        ),
+      ),
+      Tooltip(
+        preferBelow: false,
+        message: 'Become a Patreon',
+        child: IconButton(
+          icon: const Icon(SimpleIcons.patreon),
+          onPressed: () => {
+            _launchURL(
+                'https://www.patreon.com/domferr')
+          },
+        ),
+      ),
+      Tooltip(
+        preferBelow: false,
+        message: 'Donate on Ko-fi',
+        child: IconButton(
+          icon: const Icon(SimpleIcons.kofi),
+          onPressed: () => {
+            _launchURL(
+                'https://www.ko-fi.com/domferr')
+          },
+        ),
+      ),
+    ];
+  }
+  Widget _trailingActions(bool _isExtendedNavigation) => Column(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: _isExtendedNavigation ? 
+      [Row(children: _getTrailingActionsButtons())]
+      : _getTrailingActionsButtons(),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +238,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             trailing: Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: _trailingActions(),
+                child: _trailingActions(_isExtendedNavigation),
               ),
             ),
           ),
