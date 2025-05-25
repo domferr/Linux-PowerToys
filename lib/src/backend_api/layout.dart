@@ -8,8 +8,6 @@ class Layout {
   Layout({ required this.id, required this.tiles });
 
   factory Layout.fromJson(Map<String, dynamic> json) {
-    var logger = Logger('Layout');
-
     return Layout(
         id: json['id'] as String,
         tiles: (json['tiles'] as List).cast<Map<String, dynamic>>().map((tileJson) => Tile.fromJson(tileJson)).toList()

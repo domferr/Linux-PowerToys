@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:linuxpowertoys/src/common_widgets/custom_layout.dart';
+import 'package:simple_icons/simple_icons.dart';
 import 'package:linuxpowertoys/src/screens/general/version.dart';
 import 'package:logging/logging.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'link_text.dart';
 
@@ -71,7 +73,7 @@ class _GeneralScreenState extends State<GeneralScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Text(
-                  "Welcome",
+                  "Welcome!",
                   style: Theme.of(context)
                       .textTheme
                       .displaySmall
@@ -112,8 +114,78 @@ class _GeneralScreenState extends State<GeneralScreen> {
         Version(
           packageInfo: _packageInfo,
         ),
-        const SizedBox(height: horizontalPadding)
+        const SizedBox(height: horizontalPadding),
+        const _Donations(),
+        const SizedBox(height: horizontalPadding),
       ],
+    );
+  }
+}
+
+class _Donations extends StatelessWidget {
+  const _Donations();
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+        children: [
+          Expanded(child: SizedBox()),
+          Padding(
+            padding: EdgeInsets.only(right: 24.0),
+            child: _DonationButton(
+              text: "Donate on Ko-fi", 
+              url: "https://ko-fi.com/domferr", 
+              icon: SimpleIcons.kofi,
+              iconColor: Colors.white,
+              color: Color(0xff29ABE0),
+            ),
+          ),
+          _DonationButton(
+            text: "Become a Patreon", 
+            url: "https://patreon.com/domferr", 
+            color: Colors.deepOrange,
+            icon: SimpleIcons.patreon,
+            iconColor: Colors.black,
+          ),
+          Expanded(child: SizedBox()),
+        ],
+    );
+  }
+}
+
+class _DonationButton extends StatelessWidget {
+  const _DonationButton({
+    required this.text,
+    required this.url,
+    required this.color,
+    required this.icon,
+    this.iconColor,
+  });
+
+  final String url;
+  final String text;
+  final Color color;
+  final IconData icon;
+  final Color? iconColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton.icon(
+      onPressed: () async {
+        try {
+          await (launchUrlString(url));
+        } catch (e) {
+          debugPrint("Error: $e");
+        }
+      },
+      icon: Icon(
+        icon,
+        color: iconColor,
+      ),
+      label: Text(text, style: const TextStyle(color: Colors.white)),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: color
+      ),
     );
   }
 }

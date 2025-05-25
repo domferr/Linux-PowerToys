@@ -159,8 +159,9 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
     String versionPart = standardOutputLines[0].replaceFirst('GNOME Shell', '').trim();
     bool isHigherThan45 = versionPart.startsWith("45") || versionPart.startsWith("46");
 
-    var url = 'https://github.com/domferr/tilingshell/releases/download/7.0.0/GNOME.42-44.tilingshell@ferrarodomenico.com.zip';
-    if (isHigherThan45) url = 'https://github.com/domferr/tilingshell/releases/download/7.0.0/tilingshell@ferrarodomenico.com.zip';
+    var versionString = "16.4";
+    var url = 'https://github.com/domferr/tilingshell/releases/download/$versionString/GNOME.42-44.tilingshell@ferrarodomenico.com.zip';
+    if (isHigherThan45) url = 'https://github.com/domferr/tilingshell/releases/download/$versionString/tilingshell@ferrarodomenico.com.zip';
 
     return _downloadFile(url, '/tmp/tilingshell.zip')
         .then((bytes) async {
@@ -294,7 +295,7 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
   void _querySelectedLayouts() async {
     try {
       var res = await _mwmSettings.get('selected-layouts');
-      _lastSelectedLayouts = res.asArray().map((e) => e.asString()).toList();
+      _lastSelectedLayouts = res.asArray().map((e) => e.asArray()[0].asString()).toList();
       _selectedLayoutIndexController.add(_lastSelectedLayouts);
     } catch (e) {
       _logger.severe("Failed to get 'layouts-json' setting", e);
@@ -312,10 +313,12 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
   }
 
   Future<void> _openLayoutEditor() async {
+    // we are doing the following
+    // gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell/Extensions/TilingShell --method org.gnome.Shell.Extensions.TilingShell.openLayoutEditor
     var client = DBusClient.session();
     var object = DBusRemoteObject(client,
         name: 'org.gnome.Shell',
-        path: DBusObjectPath('/org/gnome/shell/extensions/TilingShell'));
+        path: DBusObjectPath('/org/gnome/Shell/Extensions/TilingShell'));
     try {
       await object.callMethod(
           'org.gnome.Shell.Extensions.TilingShell', 'openLayoutEditor', [],
@@ -355,5 +358,25 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
         'selected-layouts',
         DBusArray(DBusSignature.string, _lastSelectedLayouts.map((e) => DBusString(layoutId)))
     );
+  }
+
+  @override
+  openMoreSettings() async {
+    // we are doing the following
+    // gdbus call --session --dest org.gnome.Shell.Extensions --object-path /org/gnome/Shell/Extensions --method org.gnome.Shell.Extensions.LaunchExtensionPrefs 'tilingshell@ferrarodomenico.com'
+    var client = DBusClient.session();
+    var object = DBusRemoteObject(client,
+        name: 'org.gnome.Shell.Extensions',
+        path: DBusObjectPath('/org/gnome/Shell/Extensions'));
+    try {
+      await object.callMethod(
+          'org.gnome.Shell.Extensions', 'LaunchExtensionPrefs', [
+            const DBusString("tilingshell@ferrarodomenico.com"),
+          ],
+      );
+    } on DBusServiceUnknownException {
+      _logger.severe('Service not available');
+    }
+    return await client.close();
   }
 }

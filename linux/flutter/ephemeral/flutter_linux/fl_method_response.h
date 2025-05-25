@@ -30,13 +30,12 @@ G_BEGIN_DECLS
 #define FL_METHOD_RESPONSE_ERROR fl_method_response_error_quark()
 
 typedef enum {
-  // NOLINTBEGIN(readability-identifier-naming)
   FL_METHOD_RESPONSE_ERROR_FAILED,
   FL_METHOD_RESPONSE_ERROR_REMOTE_ERROR,
   FL_METHOD_RESPONSE_ERROR_NOT_IMPLEMENTED,
-  // NOLINTEND(readability-identifier-naming)
 } FlMethodResponseError;
 
+G_MODULE_EXPORT
 GQuark fl_method_response_error_quark(void) G_GNUC_CONST;
 
 G_MODULE_EXPORT

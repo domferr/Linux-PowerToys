@@ -2,8 +2,8 @@ FROM ubuntu:22.04
 
 RUN apt update && apt install -y git curl unzip cmake libgtk-3-dev clang ninja-build wget
 
-RUN wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.19.6-stable.tar.xz
-RUN tar -xf flutter_linux_3.19.6-stable.tar.xz -C /
+RUN wget https://storage.googleapis.com/flutter_infra_release/releases/stable/linux/flutter_linux_3.32.0-stable.tar.xz
+RUN tar -xf flutter_linux_3.32.0-stable.tar.xz -C /
 RUN git config --global --add safe.directory /flutter
 #RUN git clone https://github.com/flutter/flutter.git
 ENV PATH "$PATH:/flutter/bin"
