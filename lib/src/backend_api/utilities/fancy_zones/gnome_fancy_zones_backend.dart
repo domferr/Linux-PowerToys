@@ -315,7 +315,7 @@ class GnomeFancyZonesBackend extends FancyZonesBackend {
     var client = DBusClient.session();
     var object = DBusRemoteObject(client,
         name: 'org.gnome.Shell',
-        path: DBusObjectPath('/org/gnome/shell/extensions/TilingShell'));
+        path: DBusObjectPath('/org/gnome/Shell/Extensions/TilingShell'));
     try {
       await object.callMethod(
           'org.gnome.Shell.Extensions.TilingShell', 'openLayoutEditor', [],
