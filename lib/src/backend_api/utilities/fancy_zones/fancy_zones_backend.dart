@@ -75,4 +75,6 @@ abstract class FancyZonesBackend extends UtilityBackend {
 
   /// get the last "enable snap assistant" value.
   bool get lastEnableSnapAssistant;
+
+  openMoreSettings();
 }

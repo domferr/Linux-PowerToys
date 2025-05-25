@@ -10,6 +10,7 @@ import 'package:linuxpowertoys/src/common_widgets/stream_listenable_builder.dart
 import 'package:logging/logging.dart';
 
 import '../../common_widgets/uninstall_setting.dart';
+import '../../common_widgets/button_setting.dart';
 import 'layout_selection.dart';
 
 final _logger = Logger('FancyZonesScreen');
@@ -124,6 +125,10 @@ class _FancyZonesScreenState extends State<FancyZonesScreen> {
     backend.uninstall().then((_) => asyncInitState());
   }
 
+  void handleOpenMoreSettingsPressed() {
+    backend.openMoreSettings();
+  }
+
   @override
   Widget build(BuildContext context) {
     _logger.finest("build() _FancyZonesScreenState");
@@ -169,6 +174,12 @@ class _FancyZonesScreenState extends State<FancyZonesScreen> {
               _OuterGaps(
                 enabled: isEnabled,
                 backend: backend,
+              ),
+              ButtonSetting(
+                  onPressed: handleOpenMoreSettingsPressed,
+                  label: "Open more...",
+                  settingDescription: "Open more settings",
+                  icon: Icons.settings,
               ),
               LayoutSelection(
                 enabled: isEnabled,
