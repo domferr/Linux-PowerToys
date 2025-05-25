@@ -1,6 +1,8 @@
 # Linux PowerToys | Fancy Zones
 FancyZones, enables advanced window layout customization. Effortlessly organize and snap windows into predefined zones to enhance productivity and streamline multitasking on your Linux desktop. It is powered by Tiling Shell!
 
+![immagine](https://github.com/user-attachments/assets/fc44b7ab-882d-4fff-9dc2-540976c7f4f3)
+
 ## Usage ##
 
 | [⬇️](#tiling-system) Tiling System | [⬇️](#snap-assistant) Snap Assistant | [⬇️](#select-a-layout) Select a layout | [⬇️](#select-multiple-tiles) Select multiple tiles |
@@ -8,6 +10,9 @@ FancyZones, enables advanced window layout customization. Effortlessly organize 
 | [⬇️](#layout-editor) **Layout editor** | [⬇️](#smart-resize) **Smart resize** | [⬇️](#tile-with-keyboard) **Tile with Keyboard** | [⬇️](#edge-tiling) **Edge Tiling** |
 | [⬇️](#tiling-buttons) **Tiling Buttons** | [⬇️](#per-workspace-layout) **Per-workspace layout** | [⬇️](#auto-tiling) **Auto-tiling** | [⬇️](#tiling-context-menu) **Tiling context menu** |
 | [⬇️](#smart-border-radius) **Smart border radius** | [⬇️](#windows-suggestions) **Windows Suggestions** 
+
+Not all the settings have been ported to Fancy Zones page of Linux Power Toys. You can click the "Open more..." button to open more settings.
+<p align="center"><img src="https://github.com/user-attachments/assets/031e9643-b05e-4a30-b8ee-afc070965c85" width=520/></p>
 
 ### Tiling System ###
 When grabbing and moving a window, press <kbd>CTRL</kbd> key to show the tiling layout (you can choose another key from the preferences). When moving on a tile, it will highlight. Ungrab the window to place that window on the highlighted tile.
