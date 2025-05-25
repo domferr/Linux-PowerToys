@@ -158,8 +158,11 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     }
   }
 
-  List<Widget> _getTrailingActionsButtons() {
-    return [
+  Widget _trailingActions(horizontalDir) => Flex(
+    mainAxisAlignment: MainAxisAlignment.end,
+    direction: horizontalDir ? Axis.horizontal:Axis.vertical,
+    crossAxisAlignment: CrossAxisAlignment.end,
+    children: [
       Tooltip(
         preferBelow: false,
         message: 'Give feedback or request a feature',
@@ -193,13 +196,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           },
         ),
       ),
-    ];
-  }
-  Widget _trailingActions(bool _isExtendedNavigation) => Column(
-    mainAxisAlignment: MainAxisAlignment.end,
-    children: _isExtendedNavigation ? 
-      [Row(children: _getTrailingActionsButtons())]
-      : _getTrailingActionsButtons(),
+    ],
   );
 
   @override
@@ -238,7 +235,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             trailing: Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 20),
-                child: _trailingActions(_isExtendedNavigation),
+                child: AnimatedSize(
+                  duration: const Duration(milliseconds: 100),
+                  child: _trailingActions(_isExtendedNavigation),
+                ),
               ),
             ),
           ),
