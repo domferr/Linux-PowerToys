@@ -2,11 +2,13 @@
 
 # Linux PowerToys
 
-![](https://img.shields.io/github/v/release/domferr/Linux-PowerToys)
-![](https://img.shields.io/github/downloads/domferr/Linux-PowerToys/total)
-![](https://img.shields.io/badge/Built%20with-Flutter-red)
-![](https://img.shields.io/github/license/domferr/Linux-PowerToys)
-[![kofi](https://img.shields.io/badge/Donate-on_Ko--fi-purple?logo=ko-fi)](https://ko-fi.com/domferr)
+
+[![](https://img.shields.io/badge/Release_v0.9-blue?style=for-the-badge)]([https://ko-fi.com/domferr](https://github.com/domferr/tilingshell/releases))
+![](https://img.shields.io/github/downloads/domferr/Linux-PowerToys/total?style=for-the-badge)
+![](https://img.shields.io/badge/Built%20with%20Flutter-red?style=for-the-badge)
+![](https://img.shields.io/github/license/domferr/Linux-PowerToys?style=for-the-badge)
+[![kofi](https://img.shields.io/badge/Donate_on_Ko--fi-purple?logo=ko-fi&style=for-the-badge)](https://ko-fi.com/domferr)
+[![patreon](https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white)](https://patreon.com/domferr)
 
 > [!IMPORTANT]
 > <img src="https://raw.githubusercontent.com/domferr/Linux-PowerToys/main/assets/images/app_icon_256x256.png" align="left" width="64"/> This project is currently in a very early stage of development. 🚧 Get Microsoft's PowerToys utilities and much more to Linux world! This project is not affiliated with or endorsed by Microsoft in any way. It is not a porting effort, but a _complete reimplementation from scratch_. Currently supports GNOME desktop environment only.
@@ -29,7 +31,8 @@ Linux PowerToys brings a set of utilities to tune and streamline Linux experienc
 Download the [latest](https://github.com/domferr/Linux-PowerToys/releases) release and enjoy! Install the utilities you want, and then you can enable them and change their settings.
 
 ### Fancy Zones ###
-When grabbing and moving a window, press <kbd>CTRL</kbd> key to show the tiling layout. When moving on a tile, it will highlight. Ungrab the window to place that window on the highlighted tile.
+
+When grabbing and moving a window, press <kbd>CTRL</kbd> key to show the tiling layout. When moving on a tile, it will highlight. Ungrab the window to place that window on the highlighted tile. [Learn more...](./doc/FANCY_ZONES.md)
 
 [tiling_system.webm](https://github.com/domferr/modernwindowmanager/assets/14203981/a45ec416-ad39-458d-9b9f-cddce8b25666)
 
